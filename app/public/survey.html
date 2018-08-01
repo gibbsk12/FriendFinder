@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -361,28 +362,85 @@
         crossorigin="anonymous"></script>
 
     <script type="text/javascript">
+
         $("#submit").on("click", function () {
             event.preventDefault();
-            var surveyData = {
-                name: $("#name").val(),
-                photo: $("#photo").val(),
-                scores: [$("input[name='questionOne']:checked").val(),
-                $("input[name='questionTwo']:checked").val(),
-                $("input[name='questionThree']:checked").val(),
-                $("input[name='questionFour']:checked").val(),
-                $("input[name='questionFive']:checked").val(),
-                $("input[name='questionSix']:checked").val(),
-                $("input[name='questionSeven']:checked").val(),
-                $("input[name='questionEight']:checked").val(),
-                $("input[name='questionNine']:checked").val(),
-                $("input[name='questionTen']:checked").val()]
-            };
-            $.post("/api/friends", surveyData, function (data) {
-                console.log("this worked")
-            });
-            // console.log(surveyData);
 
+            function checkCompletion() {
+                var complete = true;
+
+                $(".form-control").each(function () {
+                    if ($(this).val() === "") {
+                        complete = false;
+                    }
+                });
+
+                if ($("input[name='questionOne']:checked").val() === "") {
+                    complete = false;
+                }
+
+                if ($("input[name='questionTwo']:checked").val() === "") {
+                    complete = false;
+                }
+
+                if ($("input[name='questionThree']:checked").val() === "") {
+                    complete = false;
+                }
+
+                if ($("input[name='questionFour']:checked").val() === "") {
+                    complete = false;
+                }
+
+                if ($("input[name='questionFive']:checked").val() === "") {
+                    complete = false;
+                }
+
+                if ($("input[name='questionSix']:checked").val() === "") {
+                    complete = false;
+                }
+
+                if ($("input[name='questionSeven']:checked").val() === "") {
+                    complete = false;
+                }
+
+                if ($("input[name='questionEight']:checked").val() === "") {
+                    complete = false;
+                }
+
+                if ($("input[name='questionNine']:checked").val() === "") {
+                    complete = false;
+                }
+
+                if ($("input[name='questionTen']:checked").val() === "") {
+                    complete = false;
+                }
+
+                return complete;
+            };
+
+            if (checkCompletion()) {
+                var surveyData = {
+                    name: $("#name").val(),
+                    photo: $("#photo").val(),
+                    scores: [$("input[name='questionOne']:checked").val(),
+                    $("input[name='questionTwo']:checked").val(),
+                    $("input[name='questionThree']:checked").val(),
+                    $("input[name='questionFour']:checked").val(),
+                    $("input[name='questionFive']:checked").val(),
+                    $("input[name='questionSix']:checked").val(),
+                    $("input[name='questionSeven']:checked").val(),
+                    $("input[name='questionEight']:checked").val(),
+                    $("input[name='questionNine']:checked").val(),
+                    $("input[name='questionTen']:checked").val()]
+                };
+                $.post("/api/friends", surveyData, function (data) {
+                    console.log("this worked")
+                });
+            }else{
+                alert("All forms are required!")
+            }
         });
+
 
     </script>
 
