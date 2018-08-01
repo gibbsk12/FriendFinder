@@ -366,6 +366,7 @@
 
     <script type="text/javascript">
         $("#submit").on("click", function () {
+            event.preventDefault();
             var surveyData = {
                 name: $("#name").val(),
                 photo: $("#photo").val(),
@@ -381,7 +382,7 @@
                 $("input[name='questionTen']:checked").val()]
             }
 
-       
+            console.log(surveyData);
          
         });
 
