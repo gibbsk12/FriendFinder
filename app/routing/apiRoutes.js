@@ -1,5 +1,5 @@
 var path = require('path');
-var friends = require('../data/friends.js');
+var friends = require('../data/friends');
 
 module.exports = function (app) {
 
@@ -13,6 +13,11 @@ module.exports = function (app) {
         console.log(surveyData)
         console.log(friends)
         var questionScores = surveyData.scores;
+
+
+
+        
+        friends.push(surveyData)
     });
 };
 
