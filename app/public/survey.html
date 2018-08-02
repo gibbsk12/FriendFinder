@@ -51,6 +51,26 @@
         color: #1E152A;
         border-color: #1E152A;
     }
+
+    .modal-content {
+        background-image: url("http://i63.tinypic.com/2hpreo4.jpg");
+        border-width: 20px;
+        border-style: solid;
+        border-color: #E8E288;
+        font-family: 'Raleway', sans-serif;
+        color: #4E6766;
+        padding: 0;
+        margin: 0;
+
+    }
+
+    #matchImg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+
+    }
 </style>
 
 <body>
@@ -355,6 +375,26 @@
         </footer>
     </div>
 
+
+
+
+
+    <div id="resultsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title text-center">MATCH MADE!</h1>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h2 id="matchName" class="text-center"></h2>
+                    <img id="matchImg" src="#">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -434,9 +474,11 @@
                     $("input[name='questionTen']:checked").val()]
                 };
                 $.post("/api/friends", surveyData, function (data) {
-                    console.log("this worked")
+                    $("#matchName").text(data.name);
+                    $("#matchImg").attr("src", data.photo);
+                    $("#resultsModal").modal("toggle");
                 });
-            }else{
+            } else {
                 alert("All forms are required!")
             }
         });
