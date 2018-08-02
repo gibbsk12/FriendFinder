@@ -6,6 +6,7 @@ For this assignment, we were asked to create a compatibility-based FriendFinder.
 
 ## Getting Started
 This application is hosted on Heroku! Click the link below for a demo!
+
 https://mysterious-beyond-85300.herokuapp.com/
 
 Take the survey and you will be able to see the user whose answers most similarly matched your own. 
